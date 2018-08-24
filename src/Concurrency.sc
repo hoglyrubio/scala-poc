@@ -28,3 +28,10 @@ val salary = Future { Thread.sleep(1000); 7000}
 val salaryLarge = salary.filter(s => s < 5000)
 Thread.sleep(1000)
 salaryLarge
+
+// Futures collecting
+
+val salaryFuture = Future { Thread.sleep(1000); 3000 }
+val salaryIncremented = salaryFuture.collect { case s if s < 5000 => s + 1000 }
+Thread.sleep(2000)
+salaryIncremented
